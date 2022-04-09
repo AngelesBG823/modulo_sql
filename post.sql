@@ -46,3 +46,45 @@ SELECT * FROM post;
 INSERT INTO post (userName, createdAt, content, descripcion, title)
 VALUES('Carlos', '09-08-2021', 'Jamás nunca', 'nunca jamás', 'neverland');
 SELECT * FROM post;
+
+-- Parte 2
+-- 1. Crear una nueva tabla llamada “comentarios”, con los atributos id, fecha, hora de
+-- creación y contenido, que se relacione con la tabla posts. (1 Punto)
+CREATE TABLE comentarios(
+    id SERIAL,
+    post_id INT,
+    createdAt TIMESTAMP,
+    content VARCHAR,
+    FOREIGN KEY (post_id) REFERENCES post (id)
+);
+\dt
+-- 2. Crear 2 comentarios para el post de "Pamela" y 4 para "Carlos". (0.4 Puntos)
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(1, '2021-05-10 15:16:13', 'el mio era un gatito');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(1, '2021-05-11 10:09:08', 'vivan los perros yeah');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(6, '2021-02-06 21:07:14', 'hierba mala nunca muere');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(6, '2020-04-04 18:58:09', 'penita toy story 3');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(6, '2021-10-06 21:07:14', 'encanto sobrevalorada');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(6, '2020-04-10 18:58:09', 'aguante turning red');
+SELECT * FROM comentarios;
+-- 3. Crear un nuevo post para "Margarita". (1 Punto)
+INSERT INTO post (userName, createdAt, content, descripcion, title)
+VALUES('Margarita', '2020-11-12', 'tatakae', 'itadakimas', 'arigato');
+SELECT * FROM post;
+-- 4. Ingresar 5 comentarios para el post de Margarita. (1 Punto)
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(7, '2021-05-11 10:00:00', 'Margarita stop');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(7, '2021-05-12 10:00:02', 'Margarita amarilla');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(7, '2021-01-11 10:30:00', 'Margarita de frambuesa');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(7, '2021-03-01 09:00:00', 'Margarita y girasol');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(7, '2021-03-10 15:00:00', 'Girasoles Van Gogh');
+SELECT * FROM comentarios;
