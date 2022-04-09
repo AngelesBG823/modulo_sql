@@ -7,8 +7,8 @@ CREATE DATABASE posts;
 -- 2. Crear una tabla “post”, con los atributos id, nombre de usuario, fecha de creación,
 -- contenido y descripción. (1 Punto
 CREATE TABLE post(
-    id SERIAL,
-    userName VARCHAR(30),
+    id SERIAL, --serial es que va por cada argumento
+    userName VARCHAR(30), --Camelcase porque no aguanta el "_"
     createdAt DATE,
     content VARCHAR,
     descripcion VARCHAR,
@@ -43,3 +43,6 @@ SELECT * FROM post;
 DELETE FROM post WHERE userName = 'Carlos';
 SELECT * FROM post;
 -- 8. Ingresar un nuevo post para el usuario "Carlos". (0.6 Puntos)
+INSERT INTO post (userName, createdAt, content, descripcion, title)
+VALUES('Carlos', '09-08-2021', 'Jamás nunca', 'nunca jamás', 'neverland');
+SELECT * FROM post;
